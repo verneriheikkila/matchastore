@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Matcha list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:insert="fragments/navbar :: navbar"></div>
+	
+	<div class="col-md-4">
+		<h1>Matcha Tea Shop</h1>
+		<h3 th:inline="text">Welcome to our webstore [[${#httpServletRequest.remoteUser}]]!</h3>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+		<br>
+		<h4>What is matcha?</h4>
+		<p>Matcha is a high-grade green tea ground into powdered form. The green tea powder is whisked into hot water, instead of steeped, to form a frothy drink. 
+		The meditative act of preparing, presenting, and sipping matcha is the backbone of the Japanese tea ceremony.</p>
+	</div>
+</body>
+</html>

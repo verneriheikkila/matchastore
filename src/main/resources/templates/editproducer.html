@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Producer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Producer</h1>
+	<div>
+		<form th:object="${producer}" th:action="@{/saveproducer}" action="#" method="post">
+			<input type="hidden" id="producerid" th:field="*{producerid}"/>	
+			
+		  	<label for="name">Name</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="area">Area</label>
+			<input type="text" th:field="*{area}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="about">About</label>
+			<input type="text" th:field="*{about}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+
+			<input type="submit" value="Save"></input>
+		</form>
+		<a href="/producerlist" class="button">Return</a>
+	</div>
+</body>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Matcha list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:insert="fragments/navbar :: navbar"></div>
+	<h1>Matcha Varieties</h1>
+	<table class="table">
+		<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Producer</th>
+			<th scope="col">Area</th>
+			<th scope="col">Grade</th>
+			<th scope="col">Size</th>
+			<th scope="col">Price</th>
+			<th scope="col">Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each = "matcha : ${matchas}">
+			<td th:text="${matcha.name}"></td>
+			<td th:text="${matcha.producer.name}"></td>
+			<td th:text="${matcha.producer.area}"></td>
+			<td th:text="${matcha.grade}"></td>
+			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.size, 0, 'COMMA', 0, 'POINT')} + ' g'"></td>
+			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.price, 0, 'COMMA', 2, 'POINT')} + ' €'"></td>
+			<td th:text="${matcha.description}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${matcha.id})}">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${matcha.id})}" class="text-danger">Delete</a></td>
+			<td><a th:href="@{/addtocart/{id}(id=${matcha.id})}">Add to cart</a></td>
+		</tr>
+		</tbody>
+	</table>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/add">Add Matcha</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Matcha list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:insert="fragments/navbar :: navbar"></div>
+	<h1>Shopping Cart</h1>
+	<table class="table">
+		<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Producer</th>
+			<th scope="col">Area</th>
+			<th scope="col">Grade</th>
+			<th scope="col">Size</th>
+			<th scope="col">Price</th>
+			<th scope="col">Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each = "matcha : ${cart}">
+			<td th:text="${matcha.name}"></td>
+			<td th:text="${matcha.producer.name}"></td>
+			<td th:text="${matcha.producer.area}"></td>
+			<td th:text="${matcha.grade}"></td>
+			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.size, 0, 'COMMA', 0, 'POINT')} + ' g'"></td>
+			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.price, 0, 'COMMA', 2, 'POINT')} + ' €'"></td>
+			<td th:text="${matcha.description}"></td>
+			<td><a th:href="@{/deletefromcart/{id}(id=${matcha.id})}">Delete</a></td>
+			<td><input id="quantity" min="0" name="quantity" value="1" type="number" /></td>
+		</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/resetcart}" class="text-danger">Reset cart</a>
+	<a>Checkout</a>
+</body>
+</html>

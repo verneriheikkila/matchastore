@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Producer list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:insert="fragments/navbar :: navbar"></div>
+	<h1>Our producers</h1>
+	<table class="table">
+		<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Area</th>
+			<th scope="col">About</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each = "producer : ${producers}">
+			<td th:text="${producer.name}"></td>
+			<td th:text="${producer.area}"></td>
+			<td th:text="${producer.about}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editproducer/{id}(id=${producer.producerid})}">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteproducer/{id}(id=${producer.producerid})}" class="text-danger">Delete</a></td>
+		</tr>
+		</tbody>
+	</table>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/addproducer">Add Producer</a>
+</body>
+</html>
