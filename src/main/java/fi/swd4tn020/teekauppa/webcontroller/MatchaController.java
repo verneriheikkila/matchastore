@@ -39,9 +39,7 @@ public class MatchaController {
 	}
 	
 	
-	
-	//NOT USED
-	
+	// RESTful service to get all matchas
 	@RequestMapping(value = "/matchas", method = RequestMethod.GET)
 	public @ResponseBody List<Matcha> matchaListRest() {
 		return (List<Matcha>) mrepository.findAll();
@@ -53,14 +51,11 @@ public class MatchaController {
 		return mrepository.findById(matchaId);
 	}
 	
-    // RESTful service to save new student
+    // RESTful service to save new Matcha
     @RequestMapping(value="/matchas", method = RequestMethod.POST)
-    public @ResponseBody Matcha saveStudentRest(@RequestBody Matcha matcha) {	
+    public @ResponseBody Matcha saveMatchatRest(@RequestBody Matcha matcha) {	
     	return mrepository.save(matcha);
     }
-	
-
-	
 	
 	
 	// Delete matcha
