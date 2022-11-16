@@ -29,7 +29,7 @@
 			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.size, 0, 'COMMA', 0, 'POINT')} + ' g'"></td>
 			<td nowrap="nowrap" th:text="${#numbers.formatDecimal(matcha.price, 0, 'COMMA', 2, 'POINT')} + ' €'"></td>
 			<td th:text="${matcha.description}"></td>
-			<td><a th:href="@{/deletefromcart/{id}(id=${matcha.id})}">Delete</a></td>
+			<td><a th:href="@{/deletefromcart/{id}(id=${matcha.id})}" class="text-danger">Delete</a></td>
 			<td><input id="quantity" min="0" name="quantity" value="1" type="number" /></td>
 		</tr>
 		</tbody>
