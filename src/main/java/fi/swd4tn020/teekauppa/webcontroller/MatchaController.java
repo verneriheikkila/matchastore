@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -51,6 +52,12 @@ public class MatchaController {
 	public @ResponseBody Optional<Matcha> findMatchaRest(@PathVariable("id") Long matchaId) {
 		return mrepository.findById(matchaId);
 	}
+	
+    // RESTful service to save new student
+    @RequestMapping(value="/matchas", method = RequestMethod.POST)
+    public @ResponseBody Matcha saveStudentRest(@RequestBody Matcha matcha) {	
+    	return mrepository.save(matcha);
+    }
 	
 
 	
