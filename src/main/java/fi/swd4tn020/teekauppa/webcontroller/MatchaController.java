@@ -81,7 +81,7 @@ public class MatchaController {
 	// Edit matcha
 	@RequestMapping(value = "/edit/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public String updateMatha(@PathVariable("id") Long id, Model model) {
+	public String updateMatcha(@PathVariable("id") Long id, Model model) {
 		Matcha matcha = mrepository.findById(id).get();
 		model.addAttribute("matcha", matcha);
 		model.addAttribute("producers", prepository.findAll());

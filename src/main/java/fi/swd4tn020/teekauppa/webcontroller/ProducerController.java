@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.swd4tn020.teekauppa.domain.ProducerRepository;
-import fi.swd4tn020.teekauppa.domain.Matcha;
 import fi.swd4tn020.teekauppa.domain.Producer;
 
 
@@ -40,7 +39,7 @@ public class ProducerController {
 	// Delete Producer
 	@RequestMapping(value = "/deleteproducer/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public String deleteMatcha(@PathVariable("id") Long producerId, Model model) {
+	public String deleteProducer(@PathVariable("id") Long producerId, Model model) {
 		prepository.deleteById(producerId);
 		return "redirect:/producerlist";
 	}
@@ -51,7 +50,6 @@ public class ProducerController {
 	public String updateProducer(@PathVariable("id") Long producerId, Model model) {
 		Producer producer = prepository.findById(producerId).get();
 		model.addAttribute("producer", producer);
-//		model.addAttribute("producers", prepository.findAll());
 		return "editproducer";
 	}
 }

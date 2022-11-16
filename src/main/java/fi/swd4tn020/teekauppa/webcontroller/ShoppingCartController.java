@@ -50,7 +50,6 @@ public class ShoppingCartController {
 	// Delete from cart
 	@RequestMapping(value = "/deletefromcart/{id}", method = RequestMethod.GET)
 	public String deleteFromCart(@PathVariable(value = "id") Long matchaId) {
-		
 		List<Matcha> cart = (List<Matcha>) session.getAttribute("cart");
 
 		Matcha item = repository.findById(matchaId).get();

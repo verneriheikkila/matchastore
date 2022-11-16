@@ -4,14 +4,11 @@
 	  
 	    <ul class="nav navbar-nav">
 		  <li><a class="navbar-brand" th:href="@{/}">Matcha Shop</a></li>
-	      <li class="active"><a th:href="@{/}">Home</a></li>
+	      <li><a th:href="@{/}">Home</a></li>
 	      <li><a th:href="@{/matchalist}">Shop</a></li>
 	      <li><a th:href="@{/producerlist}">Producers</a></li>
+	      <li><a th:href="@{/shoppingcart}">Cart</a></li>
 	    </ul>
-	    
-	    <ul class="nav navbar-nav">
-			<li><a th:href="@{/shoppingcart}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&ensp;Cart</a></li>
-		</ul>
 	    
     	<ul class="nav navbar-nav navbar-right" th:if="${#authorization.expression('isAuthenticated()')}">
 			<li><a>Hello &ensp;[[${#httpServletRequest.remoteUser}]]!</a></li>
